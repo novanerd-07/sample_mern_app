@@ -1,8 +1,15 @@
 let express = require('express');
 let router = express.Router();
+let {users} = require('../models/users');
+let bcrypt = require('bcrypt');
 
-router.post("/register",(req,res)=>{
-    res.send("register router called");
+router.post("/register",async(req,res)=>{
+    // res.send("register router called");
+    let data = req.body;
+    data.password = await bcrypt.hash(data.password,10);
+    let newuser = new users(data);
+    let result = await newuser.save();
+    res.send(result);
 })
 
 router.post("/login",(req,res)=>{

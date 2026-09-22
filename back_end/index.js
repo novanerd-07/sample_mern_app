@@ -1,5 +1,14 @@
 let express = require('express');
 let app = express();
+let mongoose = require('mongoose');
+let hrroutes = require('./routes/hr_routes');
+//localhost:3000/api/hr/viewemployees
+let emproutes = require('./routes/emp_routes');
+//localhost:3000/api/emp/viewemployee
+// indicating server incoming json format Data
+app.use(express.json());
+mongoose.connect("mongodb://localhost:27017/hrmanagement").then(()=>{console.log("db connection success")}).catch((err)=>console.log(err));
+
 
 // // localhost:3000/register
 // app.post("/register",(req,res)=>{
@@ -9,15 +18,7 @@ let app = express();
 // app.get("/viewstudent",(req,res)=>{
 //     res.send("viewstudent page called");
 // })
-
-
-let hrroutes = require('./routes/hr_routes');
-//localhost:3000/api/hr/viewemployees
-
 app.use("/api/hr",hrroutes);
-
-let emproutes = require('./routes/emp_routes');
-//localhost:3000/api/hr/viewemployees
 
 app.use("/api/emp",emproutes);
 
