@@ -5,6 +5,7 @@ let hrroutes = require('./routes/hr_routes');
 //localhost:3000/api/hr/viewemployees
 let emproutes = require('./routes/emp_routes');
 //localhost:3000/api/emp/viewemployee
+
 // indicating server incoming json format Data
 app.use(express.json());
 mongoose.connect("mongodb://localhost:27017/hrmanagement").then(()=>{console.log("db connection success")}).catch((err)=>console.log(err));
