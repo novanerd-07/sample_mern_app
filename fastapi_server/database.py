@@ -9,3 +9,4 @@ db = client["vfstr_db"]
 #connect with our collections
 student_collection = db["students"]
 staff_collection = db["staff"]
+
