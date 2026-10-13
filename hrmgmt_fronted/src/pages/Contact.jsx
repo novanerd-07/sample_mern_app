@@ -1,0 +1,56 @@
+import { useState } from "react";
+
+function Contact() {
+    let [name, setName] = useState("");
+    let [age, setAge] = useState(18);
+    let [phno, setPhno] = useState("");
+
+    let RegisterData = (event) => {
+        event.preventDefault();
+
+        // Collect all the data from the form
+        console.log(name);
+        console.log(age);
+        console.log(phno);
+    };
+
+    return (
+        <div>
+            <h1>Contact page called</h1>
+
+            <form onSubmit={RegisterData}>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    placeholder="Enter your name"
+                />
+                <br />
+
+                <input
+                    type="number"
+                    value={age}
+                    onChange={(event) => setAge(event.target.value)}
+                    placeholder="Enter your age"
+                />
+                <br />
+
+                <input
+                    type="text"
+                    value={phno}
+                    onChange={(event) => setPhno(event.target.value)}
+                    placeholder="Enter your phone no"
+                />
+                <br />
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <h3>{name}</h3>
+            <h3>{age}</h3>
+            <h3>{phno}</h3>
+        </div>
+    );
+}
+
+export default Contact
