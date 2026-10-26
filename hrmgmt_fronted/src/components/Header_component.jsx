@@ -9,6 +9,9 @@ function Header_component(){
       <Link to="/">Home</Link>
       <Link to="/about">About us</Link>
       <Link to="/contact">Contact us</Link>
+      <Link to="/register">Register</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/userhome">UserHome</Link>
       </div>
     </div>
   )
