@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 function Register(){
     let [name,setName]=useState("")
-    let [emailid,setEmailid]=useState("")
+    let [email,setEmail]=useState("")
     let [password,setPassword]=useState("")
     let [role, setRole] = useState("")
 
@@ -16,7 +16,7 @@ function Register(){
             {
                 method:"POST",
                 headers:{'Content-Type':"application/json"},
-                body:JSON.stringify({name,emailid,password,role})
+                body:JSON.stringify({name,email,password,role})
                 
             }
         )
@@ -35,10 +35,10 @@ function Register(){
         <form onSubmit={handleRegister}>
 
             <input type="text" onChange={(e)=>setName(e.target.value)} value={name} placeholder="Enter username"></input><br/>
-            <input type="text" onChange={(e)=>setEmailid(e.target.value)} value={emailid} placeholder="Enter emailid"></input><br/>
+            <input type="text" onChange={(e)=>setEmail(e.target.value)} value={email} placeholder="Enter email"></input><br/>
             <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password} placeholder="Enter password"></input><br/>
             <select value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value="EMPLOYEE">Employee</option>
+                <option value="EMPLOYEE">EMPLOYEE</option>
                 <option value="HR">HR</option>
             </select><br/>
             

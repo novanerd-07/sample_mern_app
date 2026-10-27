@@ -1,23 +1,30 @@
-import {useState} from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 function Login(){
-    let [emailid,setEmailid]=useState("")
+    let [email,setEmail]=useState("")
     let [password,setPassword]=useState("")
     let [error,setError]=useState("")
     let navigate=useNavigate()
-    let handleLogin=(event)=>{
+    let handleLogin=async(event)=>{
         event.preventDefault()
-        if(emailid=="admin@gmail.com"&& password=="admin"){
-            navigate("/userhome")
+        if(email=="admin@gmail.com"&& password=="admin"){
+            navigate("/adminhome")
         }else{
-            setError("invalid credentials")
+            let req=await fetch("http://localhost:3000/api/emp/login",
+                {method:"POST",
+                    headers:{"Content-Type":"application/json"},
+                    body:JSON.stringify({email,password})
+
+                });
+            let data=await req.json()
+            console.log(data);
         }
     }
     return(
     <div>
         <form onSubmit={handleLogin}>
 
-            <input type="text" value={emailid} onChange={(e)=>setEmailid(e.target.value)} placeholder="enter emailid"></input> <br/> 
+            <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="enter email"></input> <br/> 
             <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="enter password"></input><br/>
             <button type="submit">Login</button>
 

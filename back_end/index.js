@@ -1,3 +1,4 @@
+let cors = require('cors')
 let express = require('express');
 let app = express();
 let mongoose = require('mongoose');
@@ -8,6 +9,7 @@ let emproutes = require('./routes/emp_routes');
 
 // indicating server incoming json format Data
 app.use(express.json());
+app.use(cors())
 mongoose.connect("mongodb://localhost:27017/hrmanagement").then(()=>{console.log("db connection success")}).catch((err)=>console.log(err));
 
 
