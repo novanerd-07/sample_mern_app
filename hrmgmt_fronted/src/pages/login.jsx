@@ -18,6 +18,17 @@ function Login(){
                 });
             let data=await req.json()
             console.log(data);
+            if (data.user){
+             localStorage.setItem("currentuser",JSON.stringify(data.user))
+             //JSON.stingify convert string data into json format
+                if (data.user.role=='HR'){
+                    navigate("/hrhome");
+                }else{
+                    navigate("/emphome")
+                }
+            }else{
+                setError(data.message);
+            }
         }
     }
     return(
